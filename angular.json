@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "sum22"
+  "defaultProject": "sum22",
+  "cli": {
+    "analytics": false
+  }
 }
