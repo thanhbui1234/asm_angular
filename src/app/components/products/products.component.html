@@ -26,7 +26,12 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
                 <td width="150">
-                    <button class="btn btn-danger">Xóa</button>
+                    <button
+                        class="btn btn-danger"
+                        (click)="removeProduct(product.id!)"
+                    >
+                        Xóa
+                    </button>
                     <button class="btn btn-primary ms-2">Sửa</button>
                 </td>
             </tr>
