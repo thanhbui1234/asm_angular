@@ -8,6 +8,7 @@
                 <th>Mã</th>
                 <th>Tên sản phẩm</th>
                 <th>Giá sản phẩm</th>
+                <th>Ngày tạo</th>
                 <th></th>
             </tr>
         </thead>
@@ -24,7 +25,10 @@
                 </td>
                 <td>{{ product.code }}</td>
                 <td>{{ product.name }}</td>
-                <td>{{ product.price }}</td>
+                <td>
+                    {{ product.price | currency : "VND" : "symbol" : "1.3-3" }}
+                </td>
+                <td>{{ product.releaseDate | date : "dd-MM-yyyy" }}</td>
                 <td width="150">
                     <button
                         class="btn btn-danger"
