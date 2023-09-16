@@ -4,4 +4,6 @@
   type="text"
   class="border-2 border-red-500"
   (input)="changeTitleByInput($event)"
+  value="{{ title }}"
 />
+<input type="text" [(ngModel)]="title" class="border-2 border-red-500" />
