@@ -1,0 +1,7 @@
+<h2>{{ title }}</h2>
+<button (click)="changeTitle()">Change</button>
+<input
+  type="text"
+  class="border-2 border-red-500"
+  (input)="changeTitleByInput($event)"
+/>
