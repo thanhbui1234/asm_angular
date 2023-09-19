@@ -57,4 +57,4 @@
     </table>
 </div>
 
-<app-product-edit [products]="products" />
+<app-product-edit [products]="products" (onRemove)="onHandleRemove($event)" />

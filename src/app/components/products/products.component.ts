@@ -98,19 +98,26 @@ export class ProductsComponent {
     const confirm = window.confirm('Are you fucking sure?');
     if (confirm) this.products = this.products.filter(item => item.id != id);
   }
+  onHandleRemove(id: any) {
+    console.log(id);
+    // 
+  }
 }
 
 
 /*
 App.tsx - products = [{id: 1, name: "A"}, {id: 2, name: "B"}]
 
-<Edit products={products}/>
+function onHanleRemove(id){
+
+}
+<Edit products={products} onRemove={onHanleRemove}/>
 
 Edit.tsx
-function Edit({products}){
+function Edit({products, onRemove}){
   return (
     <div>{products.map(item => (
-      <div>{item.name}</div>
+      <div>{item.name}</div> <Button onClick={() => onRemove(item.id)} />
     ))}</div>
 }
 */

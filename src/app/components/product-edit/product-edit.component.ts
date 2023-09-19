@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProduct } from 'src/app/interfaces/product';
 
 @Component({
@@ -8,4 +8,8 @@ import { IProduct } from 'src/app/interfaces/product';
 })
 export class ProductEditComponent {
   @Input() products!: IProduct[];
+  @Output() onRemove = new EventEmitter()
+  onClick(id: any) {
+    this.onRemove.emit(id)
+  }
 }
