@@ -99,3 +99,18 @@ export class ProductsComponent {
     if (confirm) this.products = this.products.filter(item => item.id != id);
   }
 }
+
+
+/*
+App.tsx - products = [{id: 1, name: "A"}, {id: 2, name: "B"}]
+
+<Edit products={products}/>
+
+Edit.tsx
+function Edit({products}){
+  return (
+    <div>{products.map(item => (
+      <div>{item.name}</div>
+    ))}</div>
+}
+*/
