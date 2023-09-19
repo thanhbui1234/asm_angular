@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { ProductsComponent } from './components/products/products.component';
 import { FormsModule } from '@angular/forms';
 import { SearchBoxPipe } from './search-box.pipe';
+import { ChangeNumberToTextPipe } from './change-number-to-text.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     SearchBoxPipe,
+    ChangeNumberToTextPipe,
   ],
   imports: [
     BrowserModule,
