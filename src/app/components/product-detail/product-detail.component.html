@@ -1,0 +1,35 @@
+<app-header></app-header>
+
+<section class="page-section portfolio mt-5 tw-mb-[150px]" id="portfolio">
+    <div class="container">
+        <!-- Portfolio Section Heading-->
+        <h2
+            class="tw-text-5xl mb-5 page-section-heading text-center text-uppercase text-secondary mb-0"
+        >
+            Sản phẩm {{ products?.id }}
+        </h2>
+        <!-- Icon Divider-->
+        <div class="d-flex justify-content-center tw-mt-4 tw-gap-[300px]">
+            <img
+                width="380"
+                class="rounded"
+                src="{{ products?.imageUrl }}"
+                alt=""
+            />
+            <div class="tw-gap-y-14 tw-flex tw-flex-col">
+                <h2 class="text-danger">{{ products?.name }}</h2>
+                <h3>
+                    {{
+                        products?.price | currency : "VND" : "symbol" : "1.3-3"
+                    }}
+                </h3>
+                <h3>
+                    {{ products?.releaseDate | date : "dd-MM-yyyy" }}
+                </h3>
+            </div>
+        </div>
+        <!-- Portfolio Grid Items-->
+    </div>
+</section>
+
+<app-footer></app-footer>
