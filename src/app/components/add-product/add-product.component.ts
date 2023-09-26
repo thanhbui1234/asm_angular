@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ProductsService } from 'src/app/service/products.service';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
     selector: 'app-add-product',
     templateUrl: './add-product.component.html',
@@ -7,13 +9,30 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AddProductComponent {
     productForm: FormGroup;
-    constructor(private _fb: FormBuilder) {
+    constructor(
+        private _fb: FormBuilder,
+        private service: ProductsService,
+        private _dialog: MatDialog
+    ) {
         this.productForm = this._fb.group({
-            email: '',
-            password: '',
+            code: '',
+            name: '',
+            price: '',
+            releaseDate: '',
         });
     }
+    closeDialog() {
+        this._dialog.closeAll();
+    }
+
     onFormSubmit = () => {
-        console.log(this.productForm.value);
+        this.service.addProduct(this.productForm.value).subscribe({
+            next: (res) => {
+                alert('Add Product Success');
+            },
+            error: (err) => {
+                console.log(err.message);
+            },
+        });
     };
 }

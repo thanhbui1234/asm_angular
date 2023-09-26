@@ -3,6 +3,8 @@ import { IProduct } from 'src/app/interfaces/product';
 import { ProductsService } from 'src/app/service/products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddProductComponent } from '../add-product/add-product.component';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 // metada
 // @decorator -> typescript -> typeorm
 
@@ -17,7 +19,8 @@ export class ProductsComponent {
 
     constructor(
         private productService: ProductsService,
-        private _dialog: MatDialog
+        private _dialog: MatDialog,
+        private router: Router
     ) {
         this.productService.getAll().subscribe({
             next: (data) => {
@@ -31,6 +34,10 @@ export class ProductsComponent {
             },
         });
     }
+
+    nivigateDelete() {
+        this.router.navigate([`/admin`]);
+    }
     openDialog() {
         this._dialog.open(AddProductComponent);
     }
@@ -38,14 +45,16 @@ export class ProductsComponent {
     removeProduct(id: any) {
         const confirm = window.confirm('Are you fucking sure?');
         if (confirm)
-            this.productService.removeProduct(id).subscribe({
-                next: (res) => {
-                    alert('Product removed');
+            this.productService.removeProduct(id).subscribe(
+                () => {
+                    console.log('Product deleted successfully');
+                    // Navigate to the "products" page after successful deletion
+                    this.router.navigate(['/admin']); // '/products' should match your route path
                 },
-                error: (err) => {
+                (err) => {
                     console.log(err.message);
-                },
-            });
+                }
+            );
     }
     onHandleRemove(id: any) {
         console.log(id);

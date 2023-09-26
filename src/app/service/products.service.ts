@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; // các phương thức call api
+import { HttpClient, HttpHeaders } from '@angular/common/http'; // các phương thức call api
 import { Observable } from 'rxjs'; // sử lý bật đồng bộ
 import { IProduct } from './../interfaces/product';
 @Injectable({
@@ -19,5 +19,12 @@ export class ProductsService {
 
     getProductById(id: number): Observable<IProduct> {
         return this.http.get<IProduct>(`${this.API_URL}/${id}`);
+    }
+
+    addProduct(product: IProduct[]): Observable<IProduct> {
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+        });
+        return this.http.post<IProduct>(this.API_URL, product, { headers });
     }
 }

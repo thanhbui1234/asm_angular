@@ -18,5 +18,6 @@ export class ProductEditComponent {
     @Output() onRemove = new EventEmitter();
     onClick(id: any) {
         this.onRemove.emit(id);
+        // this.navigateToAbout();
     }
 }

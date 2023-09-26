@@ -1,29 +1,54 @@
-<form [formGroup]="productForm" (ngSubmit)="onFormSubmit()" class="p-20">
+<form [formGroup]="productForm" (ngSubmit)="onFormSubmit()" class="tw-p-20">
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <label for="exampleInputEmail1" class="form-label">Mã</label>
         <input
-            formControlName="email"
-            type="email"
+            formControlName="code"
+            type="text"
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
         />
-        <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
-        </div>
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <label for="exampleInputPassword1" class="form-label"
+            >Tên sản phẩm</label
+        >
         <input
-            formControlName="password"
+            formControlName="name"
             type="password"
             class="form-control"
             id="exampleInputPassword1"
         />
     </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"
+            >Gía sản phẩm</label
+        >
+        <input
+            formControlName="price"
+            type="number"
+            class="form-control"
+            id="exampleInputPassword1"
+        />
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Ngày tạo</label>
+        <div class="form-group">
+            <input
+                formControlName="releaseDate"
+                type="date"
+                class="form-control"
+                placeholder="Choose Date"
+                bsDatepicker
+            />
+        </div>
+    </div>
+
+    <div class="d-flex tw-gap-8">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" (click)="closeDialog()" class="btn btn-danger">
+            Cancel
+        </button>
+    </div>
 </form>
