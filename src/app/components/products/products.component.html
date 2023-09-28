@@ -53,15 +53,18 @@
                 <td width="150">
                     <button
                         class="btn btn-danger"
-                        (click)="removeProduct(product.id!)"
+                        (click)="removeProduct(+product.id!)"
                     >
                         Xóa
                     </button>
-                    <button class="btn btn-primary ms-2">Sửa</button>
+                    <button
+                        (click)="updateProduct(+product.id!)"
+                        class="btn btn-primary ms-2"
+                    >
+                        Sửa
+                    </button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
-
-<app-product-edit [products]="products" (onRemove)="onHandleRemove($event)" />

@@ -8,6 +8,7 @@ import { IProduct } from './../interfaces/product';
 export class ProductsService {
     API_URL = `https://6110f09bc38a0900171f0ed0.mockapi.io/product`;
 
+    sharedData!: IProduct;
     constructor(private http: HttpClient) {}
 
     getAll(): Observable<IProduct[]> {
@@ -26,5 +27,13 @@ export class ProductsService {
             'Content-Type': 'application/json',
         });
         return this.http.post<IProduct>(this.API_URL, product, { headers });
+    }
+
+    setData(data: IProduct) {
+        this.sharedData = data;
+    }
+
+    getData() {
+        return this.sharedData;
     }
 }
