@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+            <form
+                [formGroup]="productForm"
+                (ngSubmit)="onFormSubmit()"
+                id="contactForm"
+                data-sb-form-api-token="API_TOKEN"
+            >
+                <!-- Name input-->
+                <div class="form-floating mb-3">
+                    <input
+                        formControlName="code"
+                        class="form-control"
+                        id="name"
+                        type="text"
+                        placeholder="Enter your code..."
+                        data-sb-validations="required"
+                    />
+                    <label for="name">Mã</label>
+                </div>
+                <!-- Email address input-->
+                <div class="form-floating mb-3">
+                    <input
+                        class="form-control"
+                        formControlName="name"
+                        id="email"
+                        type="text"
+                        placeholder="Emter your name..."
+                        data-sb-validations="required,email"
+                    />
+                    <label for="email">Name </label>
+                </div>
+                <!-- Phone number input-->
+                <div class="form-floating mb-3">
+                    <input
+                        formControlName="price"
+                        class="form-control"
+                        id="phone"
+                        type="number"
+                        placeholder="Enter price..."
+                        data-sb-validations="required"
+                    />
+                    <label for="phone">Gía</label>
+                </div>
+                <!-- Message input-->
+
+                <div class="form-floating mb-3">
+                    <input
+                        formControlName="releaseDate"
+                        class="form-control"
+                        id="phone"
+                        type="date"
+                        placeholder="Enter price..."
+                        data-sb-validations="required"
+                    />
+                    <label for="phone">Ngày tạo</label>
+                </div>
+
+                <button
+                    class="btn btn-primary btn-xl"
+                    id="submitButton"
+                    type="submit"
+                >
+                    Send
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

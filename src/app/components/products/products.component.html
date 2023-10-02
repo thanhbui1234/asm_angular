@@ -53,13 +53,13 @@
                 <td width="150">
                     <button
                         class="btn btn-danger"
-                        (click)="removeProduct(+product.id!)"
+                        (click)="deleteProduct(+product.id!)"
                     >
                         Xóa
                     </button>
                     <button
-                        (click)="updateProduct(+product.id!)"
                         class="btn btn-primary ms-2"
+                        routerLink="/admin/update/{{ product.id }}"
                     >
                         Sửa
                     </button>

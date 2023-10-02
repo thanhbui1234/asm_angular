@@ -29,6 +29,12 @@ export class ProductsService {
         return this.http.post<IProduct>(this.API_URL, product, { headers });
     }
 
+    updateProduct(product: IProduct, id: number): Observable<IProduct> {
+        console.log(product);
+
+        return this.http.put<IProduct>(`${this.API_URL}/${id}`, product);
+    }
+
     setData(data: IProduct) {
         this.sharedData = data;
     }

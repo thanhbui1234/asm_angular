@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsComponent } from './components/products/products.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ProductUpdateComponent } from './components/product-update/product-update.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { LayoutComponent } from './layout/layout.component';
+import { UpdateComponent } from './update/update.component';
 const routes: Routes = [
-    { path: 'hello', component: ProductUpdateComponent },
     // { path: 'product/:idP', component: ProductDetailComponent },
     {
         path: '',
@@ -39,6 +38,10 @@ const routes: Routes = [
                 component: HomeComponent,
             },
         ],
+    },
+    {
+        path: 'admin/update/:idUp',
+        component: UpdateComponent,
     },
     { path: '**', component: NotFoundComponent },
 ];

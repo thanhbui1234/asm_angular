@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { SearchBoxPipe } from './search-box.pipe';
 import { ChangeNumberToTextPipe } from './change-number-to-text.pipe';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ProductUpdateComponent } from './components/product-update/product-update.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,6 +24,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
     declarations: [
@@ -33,13 +33,13 @@ import { LayoutComponent } from './layout/layout.component';
         SearchBoxPipe,
         ChangeNumberToTextPipe,
         NotFoundComponent,
-        ProductUpdateComponent,
         AddProductComponent,
         HomeComponent,
         HeaderComponent,
         ProductDetailComponent,
         FooterComponent,
         LayoutComponent,
+        UpdateComponent,
     ],
     imports: [
         BrowserModule,

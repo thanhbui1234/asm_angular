@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { async, lastValueFrom } from 'rxjs';
 // metada
 // @decorator -> typescript -> typeorm
 
@@ -32,17 +33,15 @@ export class ProductsComponent {
             code: '',
             releaseDate: '',
         });
-        this.productService.getAll().subscribe({
-            next: (data) => {
-                this.products = data.reverse();
-            },
-            error: (error) => {
-                console.log('error', error.message);
-            },
-            complete: () => {
-                console.log('complete');
-            },
-        });
+        this.getProduct();
+    }
+
+    async getProduct() {
+        try {
+            this.products = await lastValueFrom(this.productService.getAll());
+        } catch (error: any) {
+            console.log('error', error.message);
+        }
     }
 
     nivigateDelete() {
@@ -59,40 +58,15 @@ export class ProductsComponent {
         });
     }
 
-    updateProduct(id: number) {
-        this.openDialog();
-
-        this.productService.getProductById(id).subscribe({
-            next: (data) => {
-                this.productService.setData(data);
-            },
-            error: (error) => {
-                console.log('error', error.message);
-            },
-            complete: () => {
-                console.log('ih');
-            },
-        });
-    }
-
-    // handleUpdate() {
-    //     this.productForm = this._fb.group({
-
-    //     })
-    // }
-
-    removeProduct(id: number) {
+    async deleteProduct(id: number) {
         const confirm = window.confirm('Are you fucking sure?');
         if (confirm)
-            this.productService.removeProduct(id).subscribe({
-                next: (res) => {
-                    alert('Delete');
-                    this.productService.getAll();
-                },
-                error: (err) => {
-                    console.log(err.message);
-                },
-            });
+            try {
+                await lastValueFrom(this.productService.removeProduct(id));
+                console.log('hi');
+            } catch (error: any) {
+                console.log('error', error.message);
+            }
     }
     onHandleRemove(id: any) {
         console.log(id);

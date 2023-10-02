@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/interfaces/product';
 import { ProductsService } from 'src/app/service/products.service';
+
+import { last, lastValueFrom } from 'rxjs';
 @Component({
     selector: 'app-product-detail',
     templateUrl: './product-detail.component.html',
@@ -19,18 +21,15 @@ export class ProductDetailComponent {
         });
     }
 
-    ngOnInit(): void {
-        this.productService.getProductById(this.prodId).subscribe({
-            next: (data) => {
-                this.products = data;
-                console.log(data);
-            },
-            error: (error) => {
-                console.log('error', error.message);
-            },
-            complete: () => {
-                console.log('complete');
-            },
-        });
+    async ngOnInit() {
+        if (this.prodId) {
+            try {
+                this.products = await lastValueFrom(
+                    this.productService.getProductById(this.prodId)
+                );
+            } catch (error: any) {
+                console.log(error.message);
+            }
+        }
     }
 }
